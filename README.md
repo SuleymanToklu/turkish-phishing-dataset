@@ -8,7 +8,7 @@
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-BERTurk-FFD21E.svg?style=flat-square&logo=huggingface&logoColor=black)](https://huggingface.co/dbmdz/bert-base-turkish-cased)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-TF--IDF-F7931E.svg?style=flat-square&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![Cybersecurity](https://img.shields.io/badge/Domain-Phishing%20Detection-blue.svg?style=flat-square)](https://github.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg?style=flat-square)](LICENSE)
+[![Code License: MIT](https://img.shields.io/badge/Code%20License-MIT-purple.svg?style=flat-square)](LICENSE)
 
 <p align="center">
   <strong>Curated dataset and comparative natural language processing pipeline for classifying legitimate vs. phishing emails in Turkish.</strong>
@@ -23,10 +23,28 @@
 Phishing attacks remain one of the most critical initial access vectors in cybersecurity. Detecting phishing content in non-English languages presents significant natural language processing challenges due to morphological complexity and limited domain-specific corpora.
 
 This repository provides:
-1. **Curated Turkish Phishing Dataset:** A dedicated tabular dataset (`turkish_phishing_dataset.csv`) labeling real-world Turkish emails into binary classes (`0: Legitimate`, `1: Phishing`).
+1. **Turkish Phishing Dataset:** A tabular dataset (`turkish_phishing_dataset/turkish_phishing_dataset.csv`) with binary classes (`0: Legitimate`, `1: Phishing`).
 2. **Fine-Tuned Transformer Pipeline:** Implementation of `dbmdz/bert-base-turkish-cased` (`BERTurk`) fine-tuned specifically for phishing email classification.
 3. **Classical ML Baselines:** Comparative benchmark using TF-IDF feature extraction ($5000$ max features) across Logistic Regression, Naive Bayes, Random Forest, Support Vector Machines (SVM), and LightGBM.
 4. **Comprehensive Evaluation Visualizations:** Confusion matrices, F1-score comparisons, and precision-recall trade-offs.
+
+---
+
+## Dataset Source and Limitations
+
+The CSV at `turkish_phishing_dataset/turkish_phishing_dataset.csv` is the same dataset published by Osman Can Çetlenbik as **Turkish Phishing Email Dataset (v1)**. It contains 7,504 records and the columns `ID`, `Konu`, `Gönderen`, `İçerik`, and `Kategori`. The v1 content is synthetic and template-based; it is not a collection of emails from real users.
+
+The dataset is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). This license applies to the dataset only and does not change the licensing of other repository files or code. Kaggle source: Osman Can Çetlenbik, [Turkish Phishing Email Dataset (v1)](https://www.kaggle.com/datasets/osmancancet/turkish-phishing-email-dataset).
+
+A leakage audit result reported for v1 noted that masking reduced the content to seven templates and that the classes could be distinguished using the first three words. This is a reported finding, not an independently verified assessment in this repository.
+
+### Related Work: TurkPhish v2
+
+TurkPhish v2 is a newer, separate dataset and is not the v1 CSV included in this repository:
+
+- Kaggle: [TurkPhish v2: Turkish Phishing E-mail Corpus](https://www.kaggle.com/datasets/osmancancet/turkphish-v2-turkish-phishing-e-mail-corpus)
+- Hugging Face: [OsmanCan/turkphish-v2](https://huggingface.co/datasets/OsmanCan/turkphish-v2)
+- Çetlenbik, O. C., & Süzen, A. A. (2026). *Applied Sciences, 16*(16), 8274. https://doi.org/10.3390/app16168274
 
 ---
 
@@ -90,6 +108,6 @@ The pipeline:
 
 ---
 
-## License
+## Licensing
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+The original code authored for this repository is licensed under the MIT License; see [LICENSE](LICENSE). This license does not apply to the dataset CSV, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) as described above, or to third-party materials, which remain under their respective terms.
